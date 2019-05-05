@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  {{value | json}}
+  <section padding style="border-left: solid 1px blue;">
+    <h4>Personal Information</h4>
+    <ion-list>
+      <!-- <ion-item>
+        <ion-input placeholder="firstname" [(ngModel)]="homepage.firstname" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="lastname" [(ngModel)]="homepage.lastname" disabled></ion-input>
+      </ion-item> -->
+      <h6>
+        <p>{{homepage.firstname}}&nbsp;{{homepage.lastname}}</p>
+      </h6>
+    </ion-list>
+  </section>
+
+  <section padding style="border-left: solid 1px blue;">
+    <h4>Contact Information</h4>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>primarymobile</ion-label>
+        <ion-input type="tel" max="8" [(ngModel)]="homepage.primarymobile" (ionBlur)="presentPrompt()" (ionChange)="appendISD()" required clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>secondarymobile</ion-label>
+        <ion-input type="tel" [(ngModel)]="homepage.secondarymobile" (ionChange)="appendISD()" required clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>primaryemail</ion-label>
+        <ion-input type="email" [(ngModel)]="homepage.primaryemail" required clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>secondaryemail</ion-label>
+        <ion-input type="email" [(ngModel)]="homepage.secondaryemail" required clearInput></ion-input>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <button ion-button full primary>Submit</button>
+</ion-content>
