@@ -30,16 +30,11 @@ homepage = {
 
   presentPrompt() {
     let alert = this.alertCtrl.create({
-      title: 'Login',
+      title: 'Verify OTP',
       inputs: [
         {
-          name: 'username',
-          placeholder: 'Username'
-        },
-        {
-          name: 'password',
-          placeholder: 'Password',
-          type: 'password'
+          name: 'otp',
+          placeholder: 'enter otp sent to '+this.homepage.primarymobile
         }
       ],
       buttons: [
@@ -51,11 +46,11 @@ homepage = {
           }
         },
         {
-          text: 'Login',
+          text: 'Verify',
           handler: data => {
-            if ((data.username == data.password)) {
+            if ((data.otp)) {
               // logged in!
-              console.log('logged clicked');
+              console.log('logged clicked',data.otp);
             } else {
               // invalid login
               return false;
