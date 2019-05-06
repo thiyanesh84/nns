@@ -28,13 +28,47 @@ homepage = {
     }
   }
 
-  presentPrompt() {
+  presentPrompt1() {
     let alert = this.alertCtrl.create({
       title: 'Verify OTP',
       inputs: [
         {
           name: 'otp',
           placeholder: 'enter otp sent to '+this.homepage.primarymobile
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Verify',
+          handler: data => {
+            if ((data.otp)) {
+              // logged in!
+              console.log('logged clicked',data.otp);
+            } else {
+              // invalid login
+              return false;
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  presentPrompt2() {
+    let alert = this.alertCtrl.create({
+      title: 'Verify OTP',
+      inputs: [
+        {
+          name: 'otp',
+          placeholder: 'enter otp sent to '+this.homepage.secondarymobile
         }
       ],
       buttons: [
