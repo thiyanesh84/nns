@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  {{value | json}}
+  <!-- {{value | json}} -->
   <section padding style="border-left: solid 1px blue;">
     <h4>Personal Information</h4>
     <ion-list>
@@ -29,12 +29,12 @@
     <ion-list>
       <ion-item>
         <ion-label floating>primarymobile</ion-label>
-        <ion-input type="tel" [(ngModel)]="homepage.primarymobile" (ionBlur)="presentPrompt1()"
-          (ionChange)="appendISD()" required clearInput></ion-input>
+        <ion-input type="tel" name="primary" disabled="{{readOnlyInput1}}" [(ngModel)]="homepage.primarymobile" (ionBlur)="presentPrompt1($event)"
+          (ionChange)="appendISD()" required clearInput></ion-input><ion-icon name="checkmark-circle" item-right></ion-icon>
       </ion-item>
       <ion-item>
         <ion-label floating>secondarymobile</ion-label>
-        <ion-input type="tel" [(ngModel)]="homepage.secondarymobile" (ionBlur)="presentPrompt2()"
+        <ion-input type="tel" name="secondary" disabled="{{readOnlyInput2}}" [(ngModel)]="homepage.secondarymobile" (ionBlur)="presentPrompt2($event)"
           (ionChange)="appendISD()" required clearInput></ion-input>
       </ion-item>
       <ion-item>

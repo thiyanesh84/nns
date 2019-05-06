@@ -1,98 +1,119 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController  } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-value:any;
-homepage = {
-  firstname: 'Mohammed',
-  lastname: 'Ahmed',
-  primarymobile:'',
-  primaryemail:'',
-  secondarymobile:'',
-  secondaryemail: ''
-};
+  value: any;
+  homepage = {
+    firstname: 'Mohammed',
+    lastname: 'Ahmed',
+    primarymobile: '',
+    primaryemail: '',
+    secondarymobile: '',
+    secondaryemail: ''
+  };
+  isOTPVerified1: boolean;
+  isOTPVerified2: boolean;
+  readOnlyInput1: boolean;
+  readOnlyInput2: boolean;
+  primaryMsg: String;
+  secondaryMsg: String;
+  
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private alertCtrl: AlertController) {
-    this.value = navParams.get('item').results[0].title;
-  } 
-  appendISD(s:string){
+    this.value = navParams.get('item');   
+    this.readOnlyInput1 = false;
+    this.readOnlyInput2 = false;
+  }
+  appendISD(s: string) {
     if (this.homepage.primarymobile.length == 1) {
-      this.homepage.primarymobile = '+973-'+this.homepage.primarymobile;
+      this.homepage.primarymobile = '+973-' + this.homepage.primarymobile;
     }
     if (this.homepage.secondarymobile.length == 1) {
-      this.homepage.secondarymobile = '+973-'+this.homepage.secondarymobile;
+      this.homepage.secondarymobile = '+973-' + this.homepage.secondarymobile;
+    }
+  }
+  presentPrompt1(event: any) {
+    console.log(event.ngControl.name);
+    if (this.homepage.primarymobile.length > 0 && !this.isOTPVerified1) {
+      let alert = this.alertCtrl.create({
+        title: 'Verify OTP',
+        inputs: [
+          {
+            name: 'otp',
+            placeholder: 'enter otp sent to ' + this.homepage.primarymobile
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Verify',
+            handler: data => {
+              if ((data.otp)) {
+                // logged in!
+                this.isOTPVerified1 = true;
+                this.readOnlyInput1 = true;
+                this.primaryMsg = 'otp verified';
+                console.log('Valid OTP::: ', data.otp);
+              } else {
+                // invalid login
+                return false;
+              }
+            }
+          }
+        ]
+      });
+      alert.present();
     }
   }
 
-  presentPrompt1() {
-    let alert = this.alertCtrl.create({
-      title: 'Verify OTP',
-      inputs: [
-        {
-          name: 'otp',
-          placeholder: 'enter otp sent to '+this.homepage.primarymobile
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
+  presentPrompt2(event: any) {
+    console.log(event.ngControl.name);
+    if (this.homepage.secondarymobile.length > 0 && !this.isOTPVerified2 && this.isOTPVerified1) {
+      let alert = this.alertCtrl.create({
+        title: 'Verify OTP',
+        inputs: [
+          {
+            name: 'otp',
+            placeholder: 'enter otp sent to ' + this.homepage.secondarymobile
           }
-        },
-        {
-          text: 'Verify',
-          handler: data => {
-            if ((data.otp)) {
-              // logged in!
-              console.log('logged clicked',data.otp);
-            } else {
-              // invalid login
-              return false;
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Verify',
+            handler: data => {
+              if ((data.otp)) {
+                // logged in!
+                this.isOTPVerified2 = true;
+                this.readOnlyInput2 = true;
+                this.secondaryMsg = 'otp verified';
+                console.log('Valid OTP::: ', data.otp);
+              } else {
+                // invalid login
+                return false;
+              }
             }
           }
-        }
-      ]
-    });
-    alert.present();
-  }
-
-  presentPrompt2() {
-    let alert = this.alertCtrl.create({
-      title: 'Verify OTP',
-      inputs: [
-        {
-          name: 'otp',
-          placeholder: 'enter otp sent to '+this.homepage.secondarymobile
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Verify',
-          handler: data => {
-            if ((data.otp)) {
-              // logged in!
-              console.log('logged clicked',data.otp);
-            } else {
-              // invalid login
-              return false;
-            }
-          }
-        }
-      ]
-    });
-    alert.present();
+        ]
+      });
+      alert.present();
+    }
   }
 }

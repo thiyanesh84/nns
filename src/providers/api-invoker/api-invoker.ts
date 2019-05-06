@@ -17,7 +17,8 @@ export class ApiInvokerProvider {
   }
 
   getData() {
-    this.films = this.httpClient.get('https://swapi.co/api/films');
+    //this.films = this.httpClient.get('https://swapi.co/api/films');
+    this.films = this.httpClient.get('https://jsonplaceholder.typicode.com/todos/1');
     // this.films
     // .subscribe(data => {
     //   console.log('my data: ', data);
