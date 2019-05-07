@@ -13,7 +13,8 @@ export class HomePage {
     primarymobile: '',
     primaryemail: '',
     secondarymobile: '',
-    secondaryemail: ''
+    secondaryemail: '',
+    isFormInValid: false
   };
   isOTPVerified1: boolean;
   isOTPVerified2: boolean;
@@ -21,6 +22,7 @@ export class HomePage {
   readOnlyInput2: boolean;
   primaryMsg: String;
   secondaryMsg: String;
+  disabledSubmitBtn: boolean;
   
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -28,6 +30,7 @@ export class HomePage {
     this.value = navParams.get('item');   
     this.readOnlyInput1 = false;
     this.readOnlyInput2 = false;
+    this.disabledSubmitBtn = false;
   }
   appendISD(s: string) {
     if (this.homepage.primarymobile.length == 1) {
@@ -116,4 +119,23 @@ export class HomePage {
       alert.present();
     }
   }
+
+ submitContactDetails(){   
+    this.disabledSubmitBtn = true;  
+    if (this.homepage.primarymobile == "" || this.homepage.primaryemail == "") {
+      this.disabledSubmitBtn = false;
+      this.homepage.isFormInValid = true;
+    }else{
+      this.homepage.isFormInValid = false;
+    }
+  }
 }
+
+/*
+Call this function like 
+await delay(300); //3 sec
+*/
+function delay(ms: number) {
+  return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
