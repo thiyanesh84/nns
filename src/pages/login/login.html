@@ -6,8 +6,8 @@
 -->
 <ion-content padding>
   <ion-list>
-    <ion-item>
-        <ion-label>Login Using</ion-label>
+    <ion-item class="inputStyle">
+        <ion-label><ion-icon name="md-log-in" style="font-size:3rem;color:purple" right></ion-icon></ion-label>
         <ion-select [(ngModel)]="formdata.selectedSecurity">
             <ion-option value="eKey">eKey</ion-option>
             <ion-option value="sc">Smart Card</ion-option>             
@@ -15,22 +15,32 @@
     </ion-item>
     <br>
     
-    <section *ngIf="formdata.selectedSecurity == 'eKey'" padding style="border-left: solid 1px blue;">
-        <h4>eKey Login</h4>
+    <section *ngIf="formdata.selectedSecurity == 'eKey'" padding class="leftbordering">
+        <h6>eKey Login</h6><p></p>
         <span *ngIf="formdata.loginfailed == true " style="color:red;">Invalid Credentials</span>
-        <ion-item>
+        <ion-item class="inputStyle">
             <ion-input placeholder="username" [(ngModel)]="formdata.username" required clearInput></ion-input>
           </ion-item>
-          <ion-item>
+          <div class="inputSeperator"></div>
+          <ion-item class="inputStyle">
               <ion-input placeholder="password" type="password" [(ngModel)]="formdata.password" required clearInput></ion-input>
-           </ion-item>
+           </ion-item><br>
+           <div style=
+           "text-align: right;
+           font-size: 1.3rem;
+           text-decoration: underline;
+           padding: 3px;">Forgot Password <br><br> Register eKey</div>
+           <a class="item" href="#" onclick="window.open('http://www.twitter.com/nraboy', '_blank', 'location=no'); return false;">
+            Open a Twitter Client or Browser
+        </a>
     </section>
-    <section *ngIf="formdata.selectedSecurity == 'sc'" padding style="border-left: solid 1px blue;">
-        <h4>Smart Card Login</h4>
-        <ion-item>
+    <section *ngIf="formdata.selectedSecurity == 'sc'" padding class="leftbordering">
+        <h6>Smart Card Login</h6><p></p>
+        <ion-item class="inputStyle">
             <ion-input placeholder="CPR" [(ngModel)]="formdata.cprnumber" required clearInput></ion-input>
           </ion-item>
-          <ion-item>
+          <div class="inputSeperator"></div>
+          <ion-item class="inputStyle">
               <ion-label>Nationality</ion-label>
               <ion-select [(ngModel)]="formdata.nationality" required>
                   <ion-option value="401">Saudi</ion-option>
@@ -40,17 +50,21 @@
                   <ion-option value="405">abu dhabi</ion-option>           
               </ion-select>
           </ion-item>
-          <ion-item>
+          <div class="inputSeperator"></div>
+          <ion-item class="inputStyle">
               <ion-datetime placeholder="Expiry Date" displayFormat="MM/DD/YYYY" [(ngModel)]="formdata.idexpirydate" required clearInput></ion-datetime>
-           </ion-item>           
-           <ion-item>
+           </ion-item>
+           <div class="inputSeperator"></div>           
+           <ion-item class="inputStyle">
               <ion-input placeholder="Block" [(ngModel)]="formdata.blocknumber" required clearInput></ion-input>
            </ion-item>
+           <div class="inputSeperator"></div>
     </section>
     
   </ion-list>
-  <button ion-button full (click)="login()">Log In&nbsp;&nbsp;<ion-spinner *ngIf="loader"></ion-spinner></button><br>
 
-  <button ion-button full color="light">Register</button>
+  <button ion-button full (click)="login()"><span class="buttonText">Log In</span>&nbsp;&nbsp;<ion-spinner *ngIf="loader"></ion-spinner></button><br>
+
+  <button ion-button full ><span class="buttonText">Register</span></button>
 
 </ion-content>

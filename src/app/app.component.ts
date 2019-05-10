@@ -16,16 +16,16 @@ export class MyApp {
 
   rootPage: any = LoginPage;//HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: string, title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Logout', component: LoginPage }
+      { icon: 'contact', title: 'Register/Update Contact', component: HomePage },
+      { icon: 'notifications', title: 'View Notifications', component: ListPage },
+      { icon: 'log-out', title: 'Logout', component: LoginPage }
     ];
 
   }

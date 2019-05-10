@@ -1,3 +1,27 @@
 page-login {
 
 }
+
+h4,h6{
+    //background-color: rgb(129, 21, 126);
+    background-image: linear-gradient(to left, rgba(255, 0, 0, 0.14), rgb(129, 21, 126));
+    border-radius:5px;
+    padding: 1rem;
+    color: white;
+}
+
+.leftbordering{
+    border-left: solid rgb(129, 21, 126);
+    border-radius: 10px;
+}
+
+ion-content, ion-item{
+    background-color:#ffdbfae8 !important;
+}
+
+.inputStyle{
+    border-radius:10px;
+}
+.inputSeperator{
+    height: 3px;
+}

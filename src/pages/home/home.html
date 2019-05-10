@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Register/Update Contact</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <!-- {{value | json}} -->
-  <section padding style="border-left: solid darkgray;border-radius: 10px;">
+  <section padding class="leftbordering">
     <!-- <h4>Personal Information</h4> -->
     <ion-list>
       <!-- <ion-item>
@@ -19,18 +19,22 @@
         <ion-input placeholder="lastname" [(ngModel)]="homepage.lastname" disabled></ion-input>
       </ion-item> -->
       <h6>Welcome, <BR>
-        <p style="margin-right: 5px;"><ion-icon name="person"></ion-icon>&nbsp;{{homepage.firstname}}&nbsp;{{homepage.lastname}} (123456789)</p>
+        <p style="margin-right: 5px;">
+          <ion-icon name="person"></ion-icon>&nbsp;{{homepage.firstname}}&nbsp;{{homepage.lastname}} (123456789)
+        </p>
       </h6>
     </ion-list>
   </section>
   <br>
   <!-- <section padding style="border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);"> -->
-  <section padding style="border-left: solid darkgray;border-radius: 10px;">
+  <section padding class="leftbordering">
     <h6>Your Contact Information</h6>
-    <span style="color:red;" *ngIf="(homepage.isFormInValid)">Please complete all information marked (*)</span> 
+    <span style="color:red;" *ngIf="(homepage.isFormInValid)">Please complete all information marked (*)</span>
     <ion-list>
-      <ion-item>
-        <ion-label floating><ion-icon name="call"></ion-icon>&nbsp;Primary Mobile <span style="color:red;">*</span></ion-label>
+      <ion-item class="inputStyle">
+        <ion-label floating>
+          <ion-icon name="call"></ion-icon>&nbsp;Primary Mobile <span style="color:red;">*</span>
+        </ion-label>
         <ion-input type="tel" name="primary" maxlength="13" disabled="{{readOnlyInput1}}"
           [(ngModel)]="homepage.primarymobile" (ionBlur)="presentPrompt1($event)" (ionChange)="appendISD()" required>
         </ion-input>
@@ -38,8 +42,11 @@
           style="font-size: 2rem;margin-top: 35px;color:green;">&nbsp;<span style="font-size: 1rem">OTP Verified</span>
         </ion-icon>
       </ion-item>
-      <ion-item>
-        <ion-label floating><ion-icon name="call"></ion-icon>&nbsp;Secondary Mobile</ion-label>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-label floating>
+          <ion-icon name="call"></ion-icon>&nbsp;Secondary Mobile
+        </ion-label>
         <ion-input type="tel" name="secondary" maxlength="13" disabled="{{readOnlyInput2}}"
           [(ngModel)]="homepage.secondarymobile" (ionBlur)="presentPrompt2($event)" (ionChange)="appendISD()" required>
         </ion-input>
@@ -47,17 +54,23 @@
           style="font-size: 2rem;margin-top: 35px;color:green;">&nbsp;<span style="font-size: 1rem">OTP Verified</span>
         </ion-icon>
       </ion-item>
-      <ion-item>
-        <ion-label floating><ion-icon name="mail"></ion-icon>&nbsp;Primary Email <span style="color:red;">*</span></ion-label>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-label floating>
+          <ion-icon name="mail"></ion-icon>&nbsp;Primary Email <span style="color:red;">*</span>
+        </ion-label>
         <ion-input type="email" [(ngModel)]="homepage.primaryemail" required clearInput></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label floating><ion-icon name="mail"></ion-icon>&nbsp;Secondary Email</ion-label>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-label floating>
+          <ion-icon name="mail"></ion-icon>&nbsp;Secondary Email
+        </ion-label>
         <ion-input type="email" [(ngModel)]="homepage.secondaryemail" required clearInput></ion-input>
       </ion-item>
     </ion-list>
-    <br><br>
-    
-    <button ion-button full primary type="submit" [disabled]="disabledSubmitBtn" (click)="submitContactDetails()">Submit</button>
-  </section>  
+    <br>
+    <button ion-button full color="light" type="submit" [disabled]="disabledSubmitBtn"
+      (click)="submitContactDetails()"><span class="buttonText">Submit</span></button>
+  </section>
 </ion-content>
