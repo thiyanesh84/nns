@@ -29,7 +29,7 @@
   <!-- <section padding style="border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);"> -->
   <section padding class="leftbordering">
     <h6>Your Contact Information</h6>
-    <span style="color:red;" *ngIf="(homepage.isFormInValid)">Please complete all information marked (*)</span>
+    <div style="color:red; padding-bottom: 10px;" *ngIf="(homepage.isFormInValid)">Please complete all information marked (*)</div>
     <ion-list>
       <ion-item class="inputStyle">
         <ion-label floating>
@@ -70,7 +70,7 @@
       </ion-item>
     </ion-list>
     <br>
-    <button ion-button full color="light" type="submit" [disabled]="disabledSubmitBtn"
+    <button ion-button full type="submit" [disabled]="disabledSubmitBtn"
       (click)="submitContactDetails()"><span class="buttonText">Submit</span></button>
   </section>
 </ion-content>
