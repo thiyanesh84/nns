@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams  } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-list',
@@ -10,7 +11,10 @@ export class ListPage {
   // should be each tab's root Page
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{id: string, entity: string, timestamp: string, sentTo: string, url: string, title: string, note: string, icon: string}>;
+
+  //notification
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -23,8 +27,13 @@ export class ListPage {
     this.items = [];
     for (let i = 1; i < 20; i++) {
       this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
+        id: i+'',
+        entity: 'General Directorate of Traffic',
+        timestamp: '20/jan/2019',
+        sentTo: '+973-1111111, +973-323232323, test@test.com, test2@test.com',
+        url: 'https://www.google.com/',
+        title: 'Notification Title ' + i,
+        note: 'This is notification description for notification ' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
@@ -33,6 +42,13 @@ export class ListPage {
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(ListPage, {
+      item: item
+    });
+  }
+
+  notificationView(event:any, item: any){
+    console.log(item);
+    this.navCtrl.push(TabsPage, {
       item: item
     });
   }

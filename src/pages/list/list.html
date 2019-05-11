@@ -8,7 +8,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<!-- <ion-content style="padding-left: 0px;padding-right: 0px;">
   <h6>Here are the list of notifications sent to your registered contact details</h6>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
@@ -22,15 +22,19 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
-</ion-content>
+</ion-content> -->
 
-<ion-footer>
-    <div style="height: 33px;
-    text-align: center;
-    margin: 12px 0px 12px 0px;
-    font-size: xx-large;">	
-        <a href="tel:80008001" title="National Contact Center">
-          <span style="color:#c80009;"><ion-icon name="call">&nbsp;80008001</ion-icon></span>
-        </a>														
-      </div>
-</ion-footer>
+<ion-content padding>
+    <ion-list>
+  
+      <!-- <ion-list-header>
+        Classes
+      </ion-list-header> -->
+  
+      <ion-item *ngFor="let item of items">
+          <h2>{{item.title}}</h2>
+          <p>{{item.note}}</p>
+          <button ion-button clear item-end (click)="notificationView($event, item)">View</button>
+        </ion-item>
+      </ion-list>
+    </ion-content>
