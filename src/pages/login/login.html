@@ -5,63 +5,92 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
+  <ion-title style="text-align:center;">
+    <ion-icon name="finger-print" style="font-size: 32px;"></ion-icon><br><span style="font-size: 13px;">Government
+      National Notification System</span>
+  </ion-title>
+
   <ion-list>
-    <ion-item class="inputStyle">
-        <ion-label><ion-icon name="md-log-in" style="font-size:3rem;color:purple" right></ion-icon></ion-label>
+    <section padding class="leftbordering">
+      <ion-item class="inputStyle">
+        <ion-label>
+          <ion-icon name="md-log-in" style="font-size:3rem;color:purple"></ion-icon>
+        </ion-label>
         <ion-select [(ngModel)]="formdata.selectedSecurity">
-            <ion-option value="eKey">eKey</ion-option>
-            <ion-option value="sc">Smart Card</ion-option>             
+          <ion-option style="font-size:3rem;color:purple" value="eKey">eKey</ion-option>
+          <ion-option style="font-size:3rem;color:purple" value="sc">Smart Card</ion-option>
         </ion-select>
-    </ion-item>
+      </ion-item>
+    </section>
     <br>
-    
     <section *ngIf="formdata.selectedSecurity == 'eKey'" padding class="leftbordering">
-        <h6>eKey Login</h6><p></p>
-        <span *ngIf="formdata.loginfailed == true " style="color:red;">Invalid Credentials</span>
-        <ion-item class="inputStyle">
-            <ion-input placeholder="username" [(ngModel)]="formdata.username" required clearInput></ion-input>
-          </ion-item>
-          <div class="inputSeperator"></div>
-          <ion-item class="inputStyle">
-              <ion-input placeholder="password" type="password" [(ngModel)]="formdata.password" required clearInput></ion-input>
-           </ion-item><br>
-           <div style=
-           "text-align: right;
+      <h6>
+        <ion-icon name="md-key"></ion-icon>&nbsp;eKey Login
+      </h6>
+      <p></p>
+      <span *ngIf="formdata.loginfailed == true " style="color:red;">Invalid Credentials</span>
+      <ion-item class="inputStyle">
+        <ion-input placeholder="username" [(ngModel)]="formdata.username" required clearInput></ion-input>
+      </ion-item>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-input placeholder="password" type="password" [(ngModel)]="formdata.password" required clearInput>
+        </ion-input>
+      </ion-item><br>
+      <div style="text-align: right;
            font-size: 1.3rem;
            text-decoration: underline;
-           padding: 3px;"><a href="https://www.ekey.bh/bnaf-usermgmt/pages/resetpwd?loc=en">Forgot Password</a><br><br><a href="https://www.ekey.bh/bnaf-usermgmt/pages/selectregistration/type/online">Register eKey</a></div>
+           padding: 3px;"><a href="https://www.ekey.bh/bnaf-usermgmt/pages/resetpwd?loc=en">Forgot
+          Password?</a><br><br><a
+          href="https://www.ekey.bh/bnaf-usermgmt/pages/selectregistration/type/online">Register</a></div>
     </section>
     <section *ngIf="formdata.selectedSecurity == 'sc'" padding class="leftbordering">
-        <h6>Smart Card Login</h6><p></p>
-        <ion-item class="inputStyle">
-            <ion-input placeholder="CPR" [(ngModel)]="formdata.cprnumber" required clearInput></ion-input>
-          </ion-item>
-          <div class="inputSeperator"></div>
-          <ion-item class="inputStyle">
-              <ion-label>Nationality</ion-label>
-              <ion-select [(ngModel)]="formdata.nationality" required>
-                  <ion-option value="401">Saudi</ion-option>
-                  <ion-option value="402">Kuwaiti</ion-option>
-                  <ion-option value="403">Omani</ion-option>
-                  <ion-option value="404">Sharjah</ion-option>
-                  <ion-option value="405">abu dhabi</ion-option>           
-              </ion-select>
-          </ion-item>
-          <div class="inputSeperator"></div>
-          <ion-item class="inputStyle">
-              <ion-datetime placeholder="Expiry Date" displayFormat="MM/DD/YYYY" [(ngModel)]="formdata.idexpirydate" required clearInput></ion-datetime>
-           </ion-item>
-           <div class="inputSeperator"></div>           
-           <ion-item class="inputStyle">
-              <ion-input placeholder="Block" [(ngModel)]="formdata.blocknumber" required clearInput></ion-input>
-           </ion-item>
-           <div class="inputSeperator"></div>
+      <h6>
+        <ion-icon name="md-card"></ion-icon>&nbsp;Smart Card Login
+      </h6>
+      <p></p>
+      <ion-item class="inputStyle">
+        <ion-input placeholder="CPR" [(ngModel)]="formdata.cprnumber" required clearInput></ion-input>
+      </ion-item>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-label>Nationality</ion-label>
+        <ion-select [(ngModel)]="formdata.nationality" required>
+          <ion-option value="401">Saudi</ion-option>
+          <ion-option value="402">Kuwaiti</ion-option>
+          <ion-option value="403">Omani</ion-option>
+          <ion-option value="404">Sharjah</ion-option>
+          <ion-option value="405">abu dhabi</ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-datetime placeholder="Expiry Date" displayFormat="MM/DD/YYYY" [(ngModel)]="formdata.idexpirydate" required
+          clearInput></ion-datetime>
+      </ion-item>
+      <div class="inputSeperator"></div>
+      <ion-item class="inputStyle">
+        <ion-input placeholder="Block" [(ngModel)]="formdata.blocknumber" required clearInput></ion-input>
+      </ion-item>
+      <div class="inputSeperator"></div>
     </section>
-    
+
   </ion-list>
 
-  <button ion-button full (click)="login()"><span class="buttonText">Log In</span>&nbsp;&nbsp;<ion-spinner *ngIf="loader"></ion-spinner></button><br>
+  <button ion-button full (click)="login()"><span class="buttonText">Log In</span>&nbsp;&nbsp;<ion-spinner
+      *ngIf="loader" color="light"></ion-spinner></button><br>
 
-  <button ion-button full ><span class="buttonText">Register</span></button>
+  <button ion-button full><span class="buttonText">Register</span></button>
 
 </ion-content>
+
+<ion-footer>
+    <div style="height: 33px;
+    text-align: center;
+    margin: 12px 0px 12px 0px;
+    font-size: xx-large;">	
+        <a href="tel:80008001" title="National Contact Center">
+          <span style="color:#c80009;"><ion-icon name="call">&nbsp;80008001</ion-icon></span>
+        </a>														
+      </div>
+</ion-footer>

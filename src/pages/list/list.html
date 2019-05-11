@@ -3,11 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Notifications</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content padding>
+  <h6>Here are the list of notifications sent to your registered contact details</h6>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>
@@ -21,3 +23,14 @@
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
 </ion-content>
+
+<ion-footer>
+    <div style="height: 33px;
+    text-align: center;
+    margin: 12px 0px 12px 0px;
+    font-size: xx-large;">	
+        <a href="tel:80008001" title="National Contact Center">
+          <span style="color:#c80009;"><ion-icon name="call">&nbsp;80008001</ion-icon></span>
+        </a>														
+      </div>
+</ion-footer>

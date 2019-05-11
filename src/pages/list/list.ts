@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams  } from 'ionic-angular';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
+  // this tells the tabs component which Pages
+  // should be each tab's root Page
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
@@ -19,7 +21,7 @@ export class ListPage {
     'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = [];
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < 20; i++) {
       this.items.push({
         title: 'Item ' + i,
         note: 'This is item #' + i,
