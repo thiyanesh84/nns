@@ -19,13 +19,15 @@
        </ion-tabs> -->
        <ion-card>
           <ion-card-header>
-            {{item.title}}
+              {{notification.title}}
           </ion-card-header>
           <ion-card-content>
-              {{item.title}}
-          </ion-card-content>
-          <ion-card-content>
-              {{item.title}}
-          </ion-card-content>
+             {{notification.note}}
+             <div style="padding: 10px 0px 15px 0px;">
+             <div style="float:left;">Date: {{notification.timestamp}}</div>
+              <div style="float:right;"><a href="{{notification.url}}">More...</a></div>
+            </div>
+            </ion-card-content>
+          
         </ion-card>
 </ion-content>
