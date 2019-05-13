@@ -18,14 +18,18 @@
         <ion-tab [root]="chatRoot" tabTitle="Chat" tabIcon="chat"></ion-tab>
        </ion-tabs> -->
        <ion-card>
-          <ion-card-header>
+          <ion-card-header style="background: purple;
+          color: white;">
               {{notification.title}}
           </ion-card-header>
           <ion-card-content>
-             {{notification.note}}
-             <div style="padding: 10px 0px 15px 0px;">
-             <div style="float:left;">Date: {{notification.timestamp}}</div>
-              <div style="float:right;"><a href="{{notification.url}}">More...</a></div>
+             
+             <div style="padding: 10px 0px 15px 5px;background-color: #ffdbfae8;margin-top:10px;">
+              <div><b>Notification: </b>{{notification.note}}</div>
+             <div><b>Date: </b>{{notification.timestamp}}</div>
+              <div><b>Url: </b><a href="{{notification.url}}">{{notification.url}}</a></div>
+              <div><b>Entity: </b>{{notification.entity}}</div>
+              <div><b>Sent to: </b>{{notification.sentTo}}</div>
             </div>
             </ion-card-content>
           

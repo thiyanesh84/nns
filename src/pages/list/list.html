@@ -24,18 +24,14 @@
   </div>
 </ion-content> -->
 
-<ion-content padding>
+
+<ion-content>
+    <p padding-left padding-right>Below is the list of historical record of your government notifications.</p>
     <ion-list>
-  
-      <!-- <ion-list-header>
-        Classes
-      </ion-list-header> -->
-      <p>View the historical record of your government notifications.</p>
-  
-      <ion-item *ngFor="let item of items">
+      <ion-item *ngFor="let item of items" style="border-bottom:solid lightgrey 1px;">
           <h2>{{item.title}}</h2>
           <p>{{item.note}}</p>
           <button ion-button clear item-end (click)="notificationView($event, item)">View</button>
         </ion-item>
       </ion-list>
-    </ion-content>
+</ion-content>
